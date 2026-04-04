@@ -1,57 +1,79 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
-
 import { Platform } from 'react-native';
-
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#3B82F6'; // Azul eléctrico / vibrante
 
 export const Colors = {
   light: {
-    text: '#11181C',
-    background: '#F9FAFB',
-    tint: tintColorLight,
-    icon: '#6B7280',
-    tabIconDefault: '#6B7280',
-    tabIconSelected: tintColorLight,
-    cardBackground: '#FFFFFF',
-    cardBorder: 'rgba(0, 0, 0, 0.05)',
+    text: '#111827',
+    background: '#FFFFFF',
+    surface: '#F9FAFB',
+    primary: '#004eea',
+    secondary: '#7C4DFF',
+    tertiary: '#00E5FF',
+    onSurface: '#111827',
+    onSurfaceVariant: '#4B5563',
+    outline: '#6B7280',
+    outlineVariant: 'rgba(0, 0, 0, 0.08)',
+    surfaceContainerLow: '#F3F4F6',
+    surfaceContainer: '#E5E7EB',
+    surfaceContainerHigh: '#E5E7EB',
+    surfaceContainerHighest: '#D1D5DB',
+    surfaceContainerLowest: '#FFFFFF',
+    surfaceBright: '#FFFFFF',
+    primaryDim: '#3b82f6',
+    secondaryDim: '#8b5cf6',
+    tertiaryDim: '#06b6d4',
+    tint: '#004eea',
+    tabIconDefault: '#9CA3AF',
+    tabIconSelected: '#004eea',
   },
   dark: {
-    text: '#F3F4F6',
-    background: '#0B0F19', // Un tono más sobrio y profundo para dark mode
-    tint: tintColorDark,
-    icon: '#9CA3AF',
-    tabIconDefault: '#9CA3AF',
-    tabIconSelected: tintColorDark,
-    cardBackground: 'rgba(30, 41, 59, 0.7)', // Fondo tipo Glassmorphism (Slate-800 con transparencia)
-    cardBorder: 'rgba(255, 255, 255, 0.08)',
+    text: '#ffffff',
+    background: '#0e0e0f',
+    surface: '#0e0e0f',
+    primary: '#94aaff',
+    secondary: '#a68cff',
+    tertiary: '#81ecff',
+    onSurface: '#ffffff',
+    onSurfaceVariant: '#adaaab',
+    outline: '#767576',
+    outlineVariant: '#484849',
+    surfaceContainerLow: '#131314',
+    surfaceContainer: '#1a191b',
+    surfaceContainerHigh: '#201f21',
+    surfaceContainerHighest: '#262627',
+    surfaceContainerLowest: '#000000',
+    surfaceBright: '#2c2c2d',
+    primaryDim: '#3367ff',
+    secondaryDim: '#7e51ff',
+    tertiaryDim: '#00d4ec',
+    tint: '#94aaff',
+    tabIconDefault: '#484849',
+    tabIconSelected: '#94aaff',
   },
 };
 
-export const Fonts = Platform.select({
-  ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
-    sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
-    serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
-    rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
-    mono: 'ui-monospace',
+export const Typography = {
+  display: {
+    fontFamily: 'Manrope_800ExtraBold',
+    fontSize: 40,
+    letterSpacing: -1,
   },
-  default: {
-    sans: 'normal',
-    serif: 'serif',
-    rounded: 'normal',
-    mono: 'monospace',
+  headline: {
+    fontFamily: 'Manrope_700Bold',
+    fontSize: 24,
+    letterSpacing: -0.5,
   },
-  web: {
-    sans: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
-    serif: "Georgia, 'Times New Roman', serif",
-    rounded: "'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Meiryo, 'MS PGothic', sans-serif",
-    mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+  title: {
+    fontFamily: 'Manrope_700Bold',
+    fontSize: 18,
   },
-});
+  body: {
+    fontFamily: 'Inter_400Regular',
+    fontSize: 14,
+  },
+  label: {
+    fontFamily: 'Inter_700Bold',
+    fontSize: 10,
+    textTransform: 'uppercase' as const,
+    letterSpacing: 2,
+  },
+};
