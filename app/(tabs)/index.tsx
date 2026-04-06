@@ -36,7 +36,11 @@ export default function HomeScreen() {
 
   const renderItem = (item: Note) => (
     <View key={item.id} style={[styles.card, { backgroundColor: themeColors.surfaceContainer }]}>
-      <View style={styles.cardHeader}>
+      <TouchableOpacity 
+        activeOpacity={0.75}
+        onPress={() => router.push(`/note/${item.id}`)}
+        style={styles.cardHeader}
+      >
         <TouchableOpacity style={[styles.checkCircle, { borderColor: themeColors.primary }]}>
            <MaterialCommunityIcons name="circle-outline" size={24} color={themeColors.primary} />
         </TouchableOpacity>
@@ -59,7 +63,7 @@ export default function HomeScreen() {
             </ThemedText>
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
       
       <TouchableOpacity 
         onPress={() => handleDelete(item.id, item.notificationId)} 

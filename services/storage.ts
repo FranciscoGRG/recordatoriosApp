@@ -20,6 +20,11 @@ export async function getNotes(): Promise<Note[]> {
   }
 }
 
+export async function getNoteById(id: string): Promise<Note | undefined> {
+  const notes = await getNotes();
+  return notes.find(note => note.id === id);
+}
+
 export async function saveNote(note: Note): Promise<void> {
   try {
     const currentNotes = await getNotes();
@@ -27,6 +32,18 @@ export async function saveNote(note: Note): Promise<void> {
     await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(newNotes));
   } catch (e) {
     console.error("Error saving note", e);
+  }
+}
+
+export async function updateNote(updatedNote: Note): Promise<void> {
+  try {
+    const currentNotes = await getNotes();
+    const newNotes = currentNotes.map(note => 
+      note.id === updatedNote.id ? updatedNote : note
+    );
+    await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(newNotes));
+  } catch (e) {
+    console.error("Error updating note", e);
   }
 }
 
