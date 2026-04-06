@@ -1,4 +1,5 @@
 import { StyleSheet, TextInput, TouchableOpacity, ScrollView, View, useColorScheme, KeyboardAvoidingView, Platform, Image, Alert } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useState } from 'react';
 import { useRouter } from 'expo-router';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
@@ -16,6 +17,7 @@ export default function ModalScreen() {
   const [days, setDays] = useState('1');
 
   const themeColors = Colors.dark;
+  const insets = useSafeAreaInsets();
 
   const handleSave = async () => {
     if (!title || !description || !days) {
@@ -57,7 +59,7 @@ export default function ModalScreen() {
       <View style={styles.topGlow} />
       <View style={styles.bottomGlow} />
 
-      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={[styles.scrollContent, { paddingBottom: 220 + insets.bottom }]} showsVerticalScrollIndicator={false}>
         {/* Hero Section */}
         <View style={styles.hero}>
           <ThemedText style={[styles.heroTag, Typography.label, { color: themeColors.onSurfaceVariant }]}>
@@ -125,7 +127,7 @@ export default function ModalScreen() {
       </ScrollView>
 
       {/* Fixed Action Bottom */}
-      <View style={[styles.actionContainer, { backgroundColor: 'rgba(26, 25, 27, 0.4)' }]}>
+      <View style={[styles.actionContainer, { backgroundColor: 'rgba(26, 25, 27, 0.4)', paddingBottom: 32 + insets.bottom }]}>
         <TouchableOpacity 
           activeOpacity={0.9} 
           style={styles.submitButtonContainer}

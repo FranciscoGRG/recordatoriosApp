@@ -1,4 +1,5 @@
 import { StyleSheet, FlatList, TouchableOpacity, View, useColorScheme, Image, ScrollView } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useCallback, useState, useMemo } from 'react';
 import { useFocusEffect, useRouter } from 'expo-router';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
@@ -14,6 +15,7 @@ export default function HomeScreen() {
   const router = useRouter();
   const [notes, setNotes] = useState<Note[]>([]);
   const themeColors = Colors.dark;
+  const insets = useSafeAreaInsets();
 
   const loadNotes = async () => {
     const loadedNotes = await getNotes();
@@ -76,7 +78,7 @@ export default function HomeScreen() {
 
       <ScrollView 
         style={styles.scrollView} 
-        contentContainerStyle={styles.scrollContent}
+        contentContainerStyle={[styles.scrollContent, { paddingBottom: 200 + insets.bottom }]}
         showsVerticalScrollIndicator={false}
       >
         {/* Header */}
@@ -141,7 +143,7 @@ export default function HomeScreen() {
       </ScrollView>
 
       {/* Floating Bottom Nav */}
-      <View style={styles.navContainer}>
+      <View style={[styles.navContainer, { bottom: 24 + insets.bottom }]}>
         <View style={[styles.navBar, { backgroundColor: 'rgba(26, 25, 27, 0.8)', borderColor: themeColors.outlineVariant }]}>
           <TouchableOpacity style={[styles.navItemActive]}>
              <LinearGradient
@@ -166,7 +168,7 @@ export default function HomeScreen() {
       {/* FAB */}
       <TouchableOpacity 
         activeOpacity={0.9}
-        style={styles.fabContainer}
+        style={[styles.fabContainer, { bottom: 100 + insets.bottom }]}
         onPress={() => router.push('/modal')}
       >
         <LinearGradient
